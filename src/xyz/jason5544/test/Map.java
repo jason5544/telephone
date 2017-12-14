@@ -16,7 +16,10 @@ public class Map extends Mapper<LongWritable, Text, Text, Text>{
 	boolean dataSource;
 	public void setup(Context context) throws IOException
 	{
+		
+		System.out.println("--------------setup---------------------------");
 		this.date = context.getConfiguration().get("date");
+		System.out.println(context.getConfiguration().get("timepoint"));
 		this.timepoint = context.getConfiguration().get("timepoint").split("-");
 		FileSplit fs = (FileSplit)context.getInputSplit();
 		String fileName = fs.getPath().getName();
@@ -38,6 +41,7 @@ public class Map extends Mapper<LongWritable, Text, Text, Text>{
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException
 	{
 		String line = value.toString();
+		System.out.println("line: " + line);
 		TableLine  tableLine = new TableLine();
 		try
 		{

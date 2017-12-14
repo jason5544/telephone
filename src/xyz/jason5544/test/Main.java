@@ -4,11 +4,11 @@ import java.io.FileOutputStream;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-import com.sun.jersey.core.impl.provider.entity.XMLJAXBElementProvider.Text;
 
 public class Main {
 	
@@ -19,6 +19,8 @@ public class Main {
 		String ouput = "/phone/output";
 		
 		Configuration conf = new Configuration();
+		conf.set("date", "2017-05-17");//设置指定的日期
+	    conf.set("timepoint", "09-17-24");//设置指定的时间
 		try
 		{
 			Job job = new Job(conf);

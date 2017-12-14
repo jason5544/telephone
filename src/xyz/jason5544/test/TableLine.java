@@ -30,6 +30,7 @@ public class TableLine {
 	private SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	public void set(String line, boolean source, String date, String[] timepoint) throws LineException
 	{
+		System.out.println("lineSplit: " + line);
 		String[] lineSplit = line.split("\t");
 		if (source)
 		{
@@ -88,6 +89,7 @@ public class TableLine {
 	public Text outValue()
 	{
 		long t = (day.getTime()/1000L);
+		System.out.println("map: " + this.position + "|" + String.valueOf(t));
 		return new Text(this.position + "|" + String.valueOf(t));
 	}
 
